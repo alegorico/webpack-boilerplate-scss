@@ -1,9 +1,10 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
@@ -11,15 +12,23 @@ module.exports = {
         }
       },
       {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [{
+            loader: "style-loader" // creates style nodes from JS strings
+        }, {
+            loader: "css-loader" // translates CSS into CommonJS
+        }, {
+            loader: "sass-loader" // compiles Sass to CSS
+        }]
+      },
+      {
         test: /\.html$/,
-        use: [
-          {
+        use: [{
             loader: "html-loader",
             options: { minimize: true }
-          }
-        ]
-      }
-    ]
+          }]
+      }]
   },
   plugins: [
     new HtmlWebPackPlugin({
