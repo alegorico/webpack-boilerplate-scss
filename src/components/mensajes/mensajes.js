@@ -1,4 +1,4 @@
 module.exports = {
-    saludo: "hola",
-    lugar: "mundo"
+    saludo: "Hola",
+    lugar: "Mundo"
 };
