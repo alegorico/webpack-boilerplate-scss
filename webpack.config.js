@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  devtool: "source-map",
   module: {
     rules: [{
         test: /\.jsx$/,
@@ -17,9 +18,13 @@ module.exports = {
         use: [{
             loader: "style-loader" // creates style nodes from JS strings
         }, {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader" , options: {
+                    sourceMap: true
+            }
         }, {
-            loader: "sass-loader" // compiles Sass to CSS
+            loader: "sass-loader" , options: {
+                    sourceMap: true
+            }
         }]
       },
       {
