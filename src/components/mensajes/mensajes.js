@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     saludo: "Hola",
     lugar: "Mundo"
 };

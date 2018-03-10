@@ -1,6 +1,6 @@
 var app = document.getElementById('app');
-var mensajes = require ("./components/mensajes/mensajes");
-var css = require("./stylesheets/main.scss");
+import mensajes from "./components/mensajes/mensajes";
+import css from "./stylesheets/main.scss";
 
 
 app.innerHTML = "<p>" + mensajes.saludo + " " + mensajes.lugar + "</p>";
