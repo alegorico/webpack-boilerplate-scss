@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
 
 const extractSass = new ExtractTextPlugin({
     filename: "./css/[hash].css",
@@ -11,6 +12,7 @@ const path = require('path');
 module.exports = {
   // devtool: "source-map",
   entry: {
+     common: './src/commons.js',
      app1: './src/app.js',
      app2: './src/app1.js'
   },
@@ -65,6 +67,9 @@ module.exports = {
       // showErrors: true,
       filename: "index.html"
     }),
-    extractSass
+    extractSass,
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common_bundle' 
+    })
   ]
 };
