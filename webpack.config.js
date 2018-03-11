@@ -1,5 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
@@ -7,8 +7,16 @@ const extractSass = new ExtractTextPlugin({
     disable: process.env.NODE_ENV === "development"
 });
 
+const path = require('path');
 module.exports = {
   // devtool: "source-map",
+  entry: {
+     app1: './src/index.js'
+  },
+  output: {
+    filename: './js/[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
   module: {
     rules: [{
         test: /\.js$/,
@@ -46,6 +54,7 @@ module.exports = {
       }]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebPackPlugin({
       template: "./src/assets/index.html",
       // showErrors: true,
