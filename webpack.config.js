@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
-    filename: "./css/[name].css",
+    filename: "./css/[hash].css",
     disable: process.env.NODE_ENV === "development"
 });
 
@@ -11,7 +11,8 @@ const path = require('path');
 module.exports = {
   // devtool: "source-map",
   entry: {
-     app1: './src/index.js'
+     app1: './src/app.js',
+     app2: './src/app1.js'
   },
   output: {
     filename: './js/[name].bundle.js',
