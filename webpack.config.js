@@ -16,7 +16,7 @@ module.exports = {
   output: {
     filename: './js/[name].bundle.js',
       path: path.resolve(__dirname, 'dist')
-    },
+  },
   module: {
     rules: [{
         test: /\.js$/,
@@ -42,6 +42,10 @@ module.exports = {
           }],
           fallback: "style-loader"
         })
+      },
+      {
+        test: /\.pug/,
+        loaders: ['html-loader', 'pug-html-loader']
       },
       {
         test: /\.html$/,
