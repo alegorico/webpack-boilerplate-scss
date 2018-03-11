@@ -11,7 +11,7 @@ const path = require('path');
 module.exports = {
   // devtool: "source-map",
   entry: {
-     app1: './src/index.js'
+     App: './src/ReactApp.js'
   },
   output: {
     filename: './js/[name].bundle.js',
